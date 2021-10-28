@@ -77,7 +77,7 @@ class TasksController extends Controller
         $limit = array_key_exists('limit', $query) && $query['limit'] ? (int) $query['limit'] : 10;
         $page = array_key_exists('page', $query) && $query['page'] ? (int) $query['page'] : 1;
         $search = array_key_exists('search', $query) && $query['search'] ? $query['search'] : null;
-        $status = array_key_exists('completed', $query) && $query['completed'] ? $query['completed'] : null;
+        $status = array_key_exists('completed', $query) && $query['completed'] >= 0 ? $query['completed'] : null;
         $offset = ($limit * $page) - $limit;
 
         $tasks = Tasks::select();
@@ -85,8 +85,7 @@ class TasksController extends Controller
         if ($search) {
             $tasks->whereRaw('MATCH(name) AGAINST(?)', [$search]);
         }
-
-        if ($status) {
+        if ($status >= 0 && $status !== null) {
             $tasks->where('completed', $status);
         }
         $total = $tasks->get()->count();

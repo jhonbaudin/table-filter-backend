@@ -62,6 +62,7 @@ $app->singleton(
 $app->configure('app');
 $app->configure('database');
 $app->configure('swagger-lume');
+$app->configure('cors');
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +75,10 @@ $app->configure('swagger-lume');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+    \Fruitcake\Cors\HandleCors::class,
+]);
+
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
@@ -97,6 +99,7 @@ $app->configure('swagger-lume');
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\SwaggerLume\ServiceProvider::class);
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

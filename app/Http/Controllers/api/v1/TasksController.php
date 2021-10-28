@@ -91,7 +91,7 @@ class TasksController extends Controller
         }
         $total = $tasks->get()->count();
 
-        $result = new LengthAwarePaginator($tasks->skip($offset)->take($limit)->get(), $total, $limit, $page);
+        $result = new LengthAwarePaginator($tasks->skip($offset)->take($limit)->orderBy('id', 'desc')->get(), $total, $limit, $page);
 
         return response()->json(collect($result), Response::HTTP_OK);
     }

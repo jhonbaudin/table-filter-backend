@@ -260,7 +260,8 @@ class TasksController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:App\Models\Tasks,name,' . $task->id,
+            'name' => 'required',
+            // 'name' => 'required|unique:App\Models\Tasks,name,' . $task->id,
             'completed' => 'required|boolean',
         ]);
 

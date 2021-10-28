@@ -14,9 +14,13 @@ Documentation for the framework can be found on the [Lumen website](https://lume
 ## Requirement
 
 [Composer](https://getcomposer.org/download/) >= 2.1
+
 [PHP](https://www.php.net/manual/es/install.php) >= 7.2
+
 [Mysql](https://dev.mysql.com/downloads/) >= 8.0
+
 [Git](https://git-scm.com/downloads) >= 2.1
+
 
 ## Instalation
 
@@ -27,6 +31,18 @@ Documentation for the framework can be found on the [Lumen website](https://lume
 - Next step is to create the mysql database, you can name it as you want, but make sure you match this name with the .env file in your project, also you have to ensure to start the mysql server, then execute the next command:
     ```sh
     mysql -u [MYSQL_USER] -p -e "create database [DATABASE_NAME]"
+    ```
+- After that, execute the next command:
+    ```sh
+    cp .env.example .env
+    ```
+- Open the `.env` file and change this values by yours.
+    ```sh
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=homestead
+        DB_USERNAME=homestead
+        DB_PASSWORD=secret
     ```
 - Then we will create the task table and seed data into the table with the next commands:
     ```sh

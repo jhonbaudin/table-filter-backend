@@ -11,14 +11,31 @@ Laravel Lumen is a stunningly fast PHP micro-framework for building web applicat
 
 Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
 
-## Contributing
+## Requirement
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+[Composer](https://getcomposer.org/download/) >= 2.1
+[PHP](https://www.php.net/manual/es/install.php) >= 7.2
+[Mysql](https://dev.mysql.com/downloads/) >= 8.0
+[Git](https://git-scm.com/downloads) >= 2.1
 
-## Security Vulnerabilities
+## Instalation
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+- To clone the repository and install all its dependencies run the following commands:
+    ```sh
+    git clone https://gitlab.com/jhonbaudin/ic_backend.git ic_backend && cd ic_backend && composer install
+    ```
+- Next step is to create the mysql database, you can name it as you want, but make sure you match this name with the .env file in your project, also you have to ensure to start the mysql server, then execute the next command:
+    ```sh
+    mysql -u [MYSQL_USER] -p -e "create database [DATABASE_NAME]"
+    ```
+- Then we will create the task table and seed data into the table with the next commands:
+    ```sh
+    php artisan migrate && php artisan db:seed --class="TasksSeeder"
+    ```
+- And finally you can run the local server with:
+    ```sh
+    php -S localhost:8000 -t public
+    ```
+## API Documentation
 
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+You can see the API documentation at the following link when your server is running. [localhost:8000/api/documentation](http://localhost:8000/api/documentation).

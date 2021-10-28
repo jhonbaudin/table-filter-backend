@@ -1,0 +1,269 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Challenge",
+        "version": "1"
+    },
+    "paths": {
+        "/api/v1/tasks": {
+            "get": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "summary": "List all tasks with database pagination.",
+                "description": "All tasks",
+                "operationId": "ca854d9f148d7fe766d5ed71f7e023b0",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page (by default the main page is number 1).",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Set the limit of elements per page (by default are 10 elements per page).",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "To search by fulltext on name column.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "completed",
+                        "in": "query",
+                        "description": "To filter by status completed(1) or incompleted(0)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response is OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "summary": "Create a task.",
+                "description": "Create a task",
+                "operationId": "584682074ee843fa6a4aa4cab3af87f0",
+                "requestBody": {
+                    "request": "Task",
+                    "description": "Task information to create.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "name of task"
+                                    },
+                                    "completed": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{taskId}": {
+            "get": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "summary": "Show an specific task.",
+                "description": "Selected task",
+                "operationId": "eb7fd13fe98151a5bd5753cf4d68d8d2",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "description": "Task id to search by.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response is OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "summary": "Update a task.",
+                "description": "Update a task",
+                "operationId": "eca52d589cd83594620eaae06d88e829",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "description": "Task id to update by.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "request": "Task",
+                    "description": "Task information to update.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "completed"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "update the selected task"
+                                    },
+                                    "completed": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Tasks API"
+                ],
+                "summary": "Delete an specific task.",
+                "description": "Selected task",
+                "operationId": "8b4198baf7bff5d1b82cf7b6f4aebec0",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "path",
+                        "description": "Task id to delete by.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Response is OK",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allowed"
+                    }
+                }
+            }
+        }
+    }
+}

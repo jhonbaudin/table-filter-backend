@@ -89,8 +89,9 @@ class TasksController extends Controller
         if ($status) {
             $tasks->where('completed', $status);
         }
+        $total = $tasks->get()->count();
 
-        $result = new LengthAwarePaginator($tasks->skip($offset)->take($limit)->get(), $tasks->get()->count(), $limit, $page);
+        $result = new LengthAwarePaginator($tasks->skip($offset)->take($limit)->get(), $total, $limit, $page);
 
         return response()->json(collect($result), Response::HTTP_OK);
     }

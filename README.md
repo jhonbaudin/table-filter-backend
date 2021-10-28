@@ -15,7 +15,7 @@ Documentation for the framework can be found on the [Lumen website](https://lume
 
 [Composer](https://getcomposer.org/download/) >= 2.1
 
-[PHP](https://www.php.net/manual/es/install.php) >= 7.2
+[PHP](https://www.php.net/manual/es/install.php) >= 8.0
 
 [Mysql](https://dev.mysql.com/downloads/) >= 8.0
 

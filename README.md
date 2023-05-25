@@ -26,7 +26,7 @@ Documentation for the framework can be found on the [Lumen website](https://lume
 
 - To clone the repository and install all its dependencies run the following commands:
     ```sh
-    git clone https://gitlab.com/jhonbaudin/ic_backend.git ic_backend && cd ic_backend && composer install
+    git clone git@github.com:jhonbaudin/table-filter-backend.git ic_backend && cd ic_backend && composer install
     ```
 - Next step is to create the mysql database, you can name it as you want, but make sure you match this name with the .env file in your project, also you have to ensure to start the mysql server, then execute the next command:
     ```sh
